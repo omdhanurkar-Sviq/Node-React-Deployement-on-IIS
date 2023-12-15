@@ -89,7 +89,30 @@ npm install
 npm run build
 ```
 
-### 2. Deploy Frontend on IIS:
+### 2. Add web.config for ReactJS:
+##### Create a `web.config` file in the build folder and add the following configuration:
+
+```bash
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.webServer>
+    <rewrite>
+      <rules>
+        <rule name="React Routes" stopProcessing="true">
+          <match url=".*" />
+          <conditions logicalGrouping="MatchAll">
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+          </conditions>
+          <action type="Rewrite" url="/" />
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>
+```
+
+### 3. Deploy Frontend on IIS:
 #### Prerequisites:
 
 * #### Node.js installed on the local machine.

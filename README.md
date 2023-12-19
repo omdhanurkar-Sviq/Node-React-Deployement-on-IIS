@@ -90,7 +90,7 @@ npm run build
 ```
 
 ### 2. Add web.config for ReactJS:
-##### Create a `web.config` file in the build folder and add the following configuration:
+##### Create a `web.config` file in the public folder and add the following configuration:
 
 ```bash
 <?xml version="1.0" encoding="utf-8"?>
